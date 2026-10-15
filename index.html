@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Скачивание файла...</title>
+    <title>Скачать учебник</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
+            background-color: #1e1e24;
+            color: #fff;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -16,52 +16,41 @@
             height: 100vh;
             margin: 0;
             text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
         }
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #3498db;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        p {
+            color: #aaa;
+            margin-bottom: 25px;
         }
         .btn {
             display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
+            padding: 16px 32px;
             background-color: #28a745;
             color: white;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 8px;
             font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: background 0.2s;
+        }
+        .btn:active {
+            background-color: #218838;
         }
     </style>
 </head>
 <body>
 
-    <div class="loader"></div>
-    <h2>Скачивание файла должно начаться автоматически...</h2>
-    <p>Если скачивание не началось, нажмите на кнопку ниже:</p>
+    <h2>Учебник готов к загрузке</h2>
+    <p>Нажмите на кнопку ниже, чтобы сохранить файл на ваше устройство</p>
     
-    <!-- Запасная кнопка, если у пользователя отключен JavaScript -->
-    <a class="btn" href="index.pdf" download="samouchitel_uis.pdf">Скачать PDF</a>
-
-    <script>
-        // Функция автоматического запуска скачивания
-        window.onload = function() {
-            const link = document.createElement('a');
-            link.href = 'index.pdf';
-            link.download = 'samouchitel_uis.pdf'; // Имя файла при сохранении
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        };
-    </script>
+    <!-- Чистая ссылка. По клику пользователя мобильный Chrome без вопросов скачает файл целиком -->
+    <a class="btn" href="index.pdf" download="samouchitel_uis.pdf">Скачать PDF (samouchitel_uis)</a>
 
 </body>
 </html>
