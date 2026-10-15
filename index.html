@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Просмотр PDF</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background-color: #333;
+            font-family: Arial, sans-serif;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .fallback {
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Попытка отобразить PDF прямо на странице -->
+    <iframe src="index.pdf">
+        <div class="fallback">
+            <h2>Ваш браузер не поддерживает просмотр PDF прямо на странице.</h2>
+            <a class="btn" href="index.pdf" download>Скачать PDF-файл</a>
+        </div>
+    </iframe>
+
+</body>
+</html>
