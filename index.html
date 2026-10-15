@@ -3,47 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Просмотр PDF</title>
+    <title>Скачивание файла...</title>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-            background-color: #333;
+        body {
             font-family: Arial, sans-serif;
-        }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        .fallback {
-            color: white;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
             text-align: center;
-            padding: 50px 20px;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         .btn {
             display: inline-block;
-            padding: 12px 24px;
-            background-color: #007bff;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #28a745;
             color: white;
             text-decoration: none;
             border-radius: 5px;
-            margin-top: 20px;
             font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-    <!-- Попытка отобразить PDF прямо на странице -->
-    <iframe src="index.pdf">
-        <div class="fallback">
-            <h2>Ваш браузер не поддерживает просмотр PDF прямо на странице.</h2>
-            <a class="btn" href="index.pdf" download>Скачать PDF-файл</a>
-        </div>
-    </iframe>
+    <div class="loader"></div>
+    <h2>Скачивание файла должно начаться автоматически...</h2>
+    <p>Если скачивание не началось, нажмите на кнопку ниже:</p>
+    
+    <!-- Запасная кнопка, если у пользователя отключен JavaScript -->
+    <a class="btn" href="index.pdf" download="samouchitel_uis.pdf">Скачать PDF</a>
+
+    <script>
+        // Функция автоматического запуска скачивания
+        window.onload = function() {
+            const link = document.createElement('a');
+            link.href = 'index.pdf';
+            link.download = 'samouchitel_uis.pdf'; // Имя файла при сохранении
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        };
+    </script>
 
 </body>
 </html>
